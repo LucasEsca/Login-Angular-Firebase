@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SingInRoutingModule } from './sing-in-routing.module';
 import { SingInComponent } from './sing-in.component';
+import { AuthFormComponent } from '@app/shared/auth-form/auth-form.component';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { SingInComponent } from './sing-in.component';
   ],
   imports: [
     CommonModule,
-    SingInRoutingModule
+    SingInRoutingModule,
+    AuthFormComponent
   ]
 })
 export class SingInModule { }
