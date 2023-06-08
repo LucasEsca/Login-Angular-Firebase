@@ -2,6 +2,7 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ErrorMessageComponent } from "./component/error-message/error-message.component";
 
 const actionType = {
   singIn:{
@@ -17,11 +18,11 @@ const actionType = {
 type ActionType = keyof typeof actionType;
 
 @Component({
-  selector: 'app-auth-form',
-  standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
-  templateUrl: './auth-form.component.html',
-  styleUrls: ['./auth-form.component.scss']
+    selector: 'app-auth-form',
+    standalone: true,
+    templateUrl: './auth-form.component.html',
+    styleUrls: ['./auth-form.component.scss'],
+    imports: [CommonModule, RouterModule, ReactiveFormsModule, ErrorMessageComponent]
 })
 export class AuthFormComponent implements OnInit {
 
@@ -30,7 +31,9 @@ export class AuthFormComponent implements OnInit {
   title!: string;
 
   private fb = inject(FormBuilder);
-  private readonly emailPatten = '';
+  private readonly emailPatten = 
+  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  ;
 
   ngOnInit(): void {
     this.title =
@@ -48,7 +51,7 @@ export class AuthFormComponent implements OnInit {
       : 'singUp'
   }
 
-  hasErrors(field: string): boolean {
+  hasError(field: string): boolean {
     const fieldName = this.form.get(field);
     return !!fieldName?.invalid && fieldName.touched;
     
