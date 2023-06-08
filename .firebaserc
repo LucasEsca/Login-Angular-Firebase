@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "login-acabe": {
+      "hosting": {
+        "angular-boilerplate": [
+          "login-acabe"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "login-acabe"
+  }
+}

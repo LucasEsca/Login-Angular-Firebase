@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
 import { BaseInterface, RequestOptions } from '@api/interfaces/base.interface';
+import { Injectable, inject } from '@angular/core';
 
 /**
  * A service that extends from Angular HttpClient
