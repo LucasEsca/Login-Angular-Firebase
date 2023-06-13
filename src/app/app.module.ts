@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore, connectFirestoreEmulator } from '@angular/fire/firestore';
 import { connectAuthEmulator } from 'firebase/auth';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { connectAuthEmulator } from 'firebase/auth';
   imports: [
     BrowserModule, 
     AppRoutingModule, 
+    NavbarComponent,
     provideFirebaseApp(() => initializeApp(environment.firebase)), 
     provideAuth(() => {
       const auth = getAuth();
