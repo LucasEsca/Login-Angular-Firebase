@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './shared/guards/auth.guard';
+import { onlyLoggedInGuard } from './shared/guards/only-logged-in.guard';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
     m => m.SingInModule) 
   }, 
   { path: 'user/profile', 
+  canActivate:[onlyLoggedInGuard],
   loadChildren: () => 
   import('./pages/users/profile/profile.module').then(
     m => m.ProfileModule) 
